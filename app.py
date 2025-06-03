@@ -33,14 +33,34 @@ Return only JSON with the following keys:
     return json.loads(content)
 
 
+def generate_slide_html(company: str, model_slide_html: str):
+    prompt = f"""
+You are GPT-4o helping to create a Porter 5 Forces slide.
+Company: {company}
+Below is a sample slide design in HTML. Please use this as a reference and generate a new slide for the company above. Return only the HTML code.
+
+---
+{model_slide_html}
+---
+"""
+    response = openai.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": "You are a financial analyst and HTML designer."},
+            {"role": "user", "content": prompt},
+        ],
+    )
+    content = response.choices[0].message.content.strip()
+    return content
+
+
 st.title("AI Junior Banker")
 company = st.text_input("Company Name")
 
 if st.button("Generate Slide") and company:
-    data = generate_slide(company)
     with open("template.html") as f:
-        template = Template(f.read())
-    html_content = template.render(company=company, data=data)
+        model_slide_html = f.read()
+    html_content = generate_slide_html(company, model_slide_html)
     pdf = HTML(string=html_content).write_pdf()
     st.download_button("Download PDF", pdf, file_name="slide.pdf")
     st.components.v1.html(html_content, height=600, scrolling=True)
