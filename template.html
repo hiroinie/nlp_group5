@@ -2,19 +2,158 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Porter 5 Forces</title>
+    <title>4P Analysis</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        h1 { text-align: center; }
-        ul { list-style-type: none; padding: 0; }
-        li { margin-bottom: 0.5em; }
+        @page {
+            size: A4 landscape;
+            margin: 20px;
+        }
+        
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0;
+            padding: 20px;
+            background-color: #ffffff;
+            width: 100%;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+        h1 { 
+            text-align: left; 
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: bold;
+            border-bottom: 2px solid #a8a8a8;
+            padding-bottom: 10px;
+        }
+        .subtitle {
+            text-align: left;
+            font-size: 14px;
+            margin-top: 15px;
+            margin-bottom: 30px;
+            color: #666;
+            line-height: 1.3;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 0;
+            width: 100%;
+            height: 480px;
+            border: none;
+            margin-top: 20px;
+        }
+        .box {
+            background-color: #dbdbdb;
+            padding: 20px;
+            position: relative;
+            border: none;
+            overflow: hidden;
+        }
+        .box:nth-child(1) {
+            border-right: 2px solid #333;
+            border-bottom: 2px solid #333;
+        }
+        .box:nth-child(2) {
+            border-bottom: 2px solid #333;
+        }
+        .box:nth-child(3) {
+            border-right: 2px solid #333;
+        }
+        .box:nth-child(4) {
+        }
+        .box h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+            font-weight: bold;
+        }
+        .box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .box li {
+            margin-bottom: 12px;
+            line-height: 1.4;
+            color: #444;
+            position: relative;
+            padding-left: 15px;
+            font-size: 13px;
+        }
+        .box li:before {
+            content: "•";
+            color: #9b443f;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .confidential {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 12px;
+            color: #666;
+            font-weight: bold;
+        }
+        @media print {
+            body {
+                width: 100%;
+                height: auto;
+            }
+            .grid-container {
+                height: 400px;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Porter 5 Forces for {{ company }}</h1>
-    {% for section, text in data.items() %}
-    <h2>{{ section }}</h2>
-    <p>{{ text }}</p>
-    {% endfor %}
+    <h1>4P Analysis</h1>
+    <div class="subtitle">
+        • Toyota's 4P Analysis (Product, Price, Place, Promotion) to organize business strategy<br>
+        • Focus on differentiation in specialized applications and global market recognition improvement
+    </div>
+    
+    <div class="grid-container">
+        <div class="box">
+            <h2>Product</h2>
+            <ul>
+                <li>Hybrid technology providing efficient and environmentally friendly lineup, emphasizing technological innovation</li>
+                <li>Diverse vehicle range including SUVs, sedans, and trucks to serve broad customer segments</li>
+                <li>Market expansion through not only new vehicles but also used car sales and certified pre-owned programs</li>
+            </ul>
+        </div>
+        
+        <div class="box">
+            <h2>Place</h2>
+            <ul>
+                <li>Strengthen global dealer network covering urban to rural areas</li>
+                <li>Enhance customer convenience by combining online sales with click & collect models</li>
+                <li>Improve post-purchase customer satisfaction through comprehensive service centers and customer support</li>
+            </ul>
+        </div>
+        
+        <div class="box">
+            <h2>Price</h2>
+            <ul>
+                <li>Competitive pricing to secure market share while adding premium through technological differentiation</li>
+                <li>Regional price adjustments based on local purchasing power for effective market adaptation</li>
+                <li>Expand customer base by reducing purchase barriers through lease contracts and installment plans</li>
+            </ul>
+        </div>
+        
+        <div class="box">
+            <h2>Promotion</h2>
+            <ul>
+                <li>Enhance brand image through sponsorships of sports events and cultural programs</li>
+                <li>Emphasize reliability and sustainability through advertising campaigns linked to environmental responsibility</li>
+                <li>Improve recognition among younger demographics using targeted social media campaigns</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="confidential">Confidential</div>
 </body>
 </html>
