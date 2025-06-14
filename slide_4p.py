@@ -112,11 +112,11 @@ Example format (aim for 100-125 characters per point):
 
 def generate_4p_slide_html(company: str, analysis_data: dict, strategic_summary: str):
     """
-    Generate 4P analysis slide using template.html with strategic summary
+    Generate 4P analysis slide using 4p_template.html with strategic summary
     """
     try:
         # Load template file
-        with open("template.html", "r", encoding="utf-8") as f:
+        with open("4p_template.html", "r", encoding="utf-8") as f:
             template_content = f.read()
         
         # Create Jinja2 template object
@@ -174,108 +174,109 @@ def generate_4p_slide_html(company: str, analysis_data: dict, strategic_summary:
         st.error(f"Template processing error occurred: {e}")
         return None
 
-# Streamlit UI
-st.title("🚀 4P Analysis Slide Generator")
-st.markdown("**Enter a company name and AI will automatically generate detailed and beautiful 4P analysis slides.**")
+def run() -> None:
+    """Run the 4P analysis Streamlit page."""
+    st.title("🚀 4P Analysis Slide Generator")
+    st.markdown("**Enter a company name and AI will automatically generate detailed and beautiful 4P analysis slides.**")
 
-# Company name input
-company = st.text_input("🏢 Enter company name", placeholder="Example: Apple, Toyota, Sony, Amazon")
+    # Company name input
+    company = st.text_input("🏢 Enter company name", placeholder="Example: Apple, Toyota, Sony, Amazon")
 
-# Generate button
-if st.button("✨ Generate Detailed 4P Analysis Slide", type="primary") and company:
-    with st.spinner("🤖 AI is executing detailed 4P analysis..."):
-        # 1. Get 4P analysis data from OpenAI API
-        analysis_data = generate_4p_analysis(company)
-        
-        if analysis_data:
-            # 2. Generate strategic summary based on analysis results
-            with st.spinner("📝 AI is generating strategic summary..."):
-                strategic_summary = generate_strategic_summary(company, analysis_data)
-            
-            st.success("🎉 Detailed 4P analysis completed!")
-            
-            # 3. Display analysis results
-            st.subheader("📊 Detailed Analysis Results")
-            
-            # Display strategic summary
-            st.info(f"**Strategic Summary:** {strategic_summary}")
-            
-            col1, col2 = st.columns(2)
-            
-            with col1:
-                st.markdown("**📱 Product (Products & Services)**")
-                for item in analysis_data.get("product", []):
-                    st.markdown(f"• {item}")
-                
-                st.markdown("**💰 Price (Pricing)**")
-                for item in analysis_data.get("price", []):
-                    st.markdown(f"• {item}")
-            
-            with col2:
-                st.markdown("**🌍 Place (Distribution & Channels)**")
-                for item in analysis_data.get("place", []):
-                    st.markdown(f"• {item}")
-                
-                st.markdown("**📢 Promotion (Marketing & Promotion)**")
-                for item in analysis_data.get("promotion", []):
-                    st.markdown(f"• {item}")
-            
-            # 4. Generate HTML slide with strategic summary
-            html_content = generate_4p_slide_html(company, analysis_data, strategic_summary)
-            
-            if html_content:
-                # 5. PDF download feature
-                col_a, col_b = st.columns([1, 3])
-                with col_a:
-                    try:
-                        pdf = HTML(string=html_content).write_pdf()
-                        st.download_button(
-                            "📄 Download High-Quality PDF", 
-                            pdf, 
-                            file_name=f"{company}_4P_analysis_detailed.pdf",
-                            mime="application/pdf"
-                        )
-                    except Exception as e:
-                        st.warning(f"PDF generation error occurred: {e}")
-                
-                # 6. HTML preview
-                st.subheader("🎨 Professional Slide Preview")
-                st.components.v1.html(html_content, height=600, scrolling=True)
-        else:
-            st.error("❌ Detailed 4P analysis generation failed.")
+    # Generate button
+    if st.button("✨ Generate Detailed 4P Analysis Slide", type="primary") and company:
+        with st.spinner("🤖 AI is executing detailed 4P analysis..."):
+            # 1. Get 4P analysis data from OpenAI API
+            analysis_data = generate_4p_analysis(company)
 
-# Display usage instructions in sidebar
-with st.sidebar:
-    st.markdown("## 🔑 API Key Configuration")
-    st.markdown("""
-    Please configure your OpenAI API key in  
-    `.streamlit/secrets.toml` file.
-    """)
-    
-    st.markdown("## 📖 How to Use")
-    st.markdown("""
-    1. 🏢 Enter company name
-    2. ✨ Click "Generate Detailed 4P Analysis Slide" button
-    3. 🤖 AI automatically executes detailed 4P analysis
-    4. 📝 AI generates strategic summary comment
-    5. 📊 Review detailed results and summary
-    6. 📄 Download high-quality PDF
-    """)
-    
-    st.markdown("## 🎯 What is 4P Analysis")
-    st.markdown("""
-    - **📱 Product**: Product & service features
-    - **💰 Price**: Pricing strategy & competitiveness
-    - **🌍 Place**: Distribution, channels & placement
-    - **📢 Promotion**: Promotion & marketing activities
-    """)
-    
-    st.markdown("## ✨ Improvement Points")
-    st.markdown("""
-    - 🎨 Faithful to original model design
-    - 📐 Presentation-oriented layout
-    - 📝 Detailed analysis content (within 125 characters)
-    - 🖨️ PDF output optimization
-    - 📊 Professional quality
-    - 🧠 AI-generated strategic summary
-    """) 
+            if analysis_data:
+                # 2. Generate strategic summary based on analysis results
+                with st.spinner("📝 AI is generating strategic summary..."):
+                    strategic_summary = generate_strategic_summary(company, analysis_data)
+
+                st.success("🎉 Detailed 4P analysis completed!")
+
+                # 3. Display analysis results
+                st.subheader("📊 Detailed Analysis Results")
+
+                # Display strategic summary
+                st.info(f"**Strategic Summary:** {strategic_summary}")
+
+                col1, col2 = st.columns(2)
+
+                with col1:
+                    st.markdown("**📱 Product (Products & Services)**")
+                    for item in analysis_data.get("product", []):
+                        st.markdown(f"• {item}")
+
+                    st.markdown("**💰 Price (Pricing)**")
+                    for item in analysis_data.get("price", []):
+                        st.markdown(f"• {item}")
+
+                with col2:
+                    st.markdown("**🌍 Place (Distribution & Channels)**")
+                    for item in analysis_data.get("place", []):
+                        st.markdown(f"• {item}")
+
+                    st.markdown("**📢 Promotion (Marketing & Promotion)**")
+                    for item in analysis_data.get("promotion", []):
+                        st.markdown(f"• {item}")
+
+                # 4. Generate HTML slide with strategic summary
+                html_content = generate_4p_slide_html(company, analysis_data, strategic_summary)
+
+                if html_content:
+                    # 5. PDF download feature
+                    col_a, col_b = st.columns([1, 3])
+                    with col_a:
+                        try:
+                            pdf = HTML(string=html_content).write_pdf()
+                            st.download_button(
+                                "📄 Download High-Quality PDF",
+                                pdf,
+                                file_name=f"{company}_4P_analysis_detailed.pdf",
+                                mime="application/pdf"
+                            )
+                        except Exception as e:
+                            st.warning(f"PDF generation error occurred: {e}")
+
+                    # 6. HTML preview
+                    st.subheader("🎨 Professional Slide Preview")
+                    st.components.v1.html(html_content, height=600, scrolling=True)
+            else:
+                st.error("❌ Detailed 4P analysis generation failed.")
+
+    # Display usage instructions in sidebar
+    with st.sidebar:
+        st.markdown("## 🔑 API Key Configuration")
+        st.markdown(
+            """
+            Please configure your OpenAI API key in
+            `.streamlit/secrets.toml` file.
+            """
+        )
+
+        st.markdown("## 📖 How to Use")
+        st.markdown(
+            """
+            1. 🏢 Enter company name
+            2. ✨ Click "Generate Detailed 4P Analysis Slide" button
+            3. 🤖 AI automatically executes detailed 4P analysis
+            4. 📝 AI generates strategic summary comment
+            5. 📊 Review detailed results and summary
+            6. 📄 Download high-quality PDF
+            """
+        )
+
+        st.markdown("## 🎯 What is 4P Analysis")
+        st.markdown(
+            """
+            - **📱 Product**: Product & service features
+            - **💰 Price**: Pricing strategy & competitiveness
+            - **🌍 Place**: Distribution, channels & placement
+            - **📢 Promotion**: Promotion & marketing activities
+            """
+        )
+
+
+if __name__ == "__main__":
+    run()

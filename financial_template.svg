@@ -1,0 +1,255 @@
+<svg x="0" y="0" width="1210" height="935" viewBox="0 0 1210 935" version="1.1" xmlns="http://www.w3.org/2000/svg" style="display: block;margin-left: auto;margin-right: auto;">
+<defs>
+<clipPath id="c_1"><path d="M0,0H1210V935H0Z"/></clipPath>
+<clipPath id="c0"><path d="M1079.7 149.2V100h84.8v49.2Z"/></clipPath>
+<clipPath id="c1"><path d="M478.2 821.1V611.5H902V821.1Z"/></clipPath>
+<clipPath id="c2"><path d="M190.3 821.1V746.6H469.8v74.5Z"/></clipPath>
+<clipPath id="c3"><path d="M194.4 820.6V751.2H459.2v69.4Z"/></clipPath>
+<clipPath id="c4"><path d="M193.6 820.6V750.4H459.9v70.2Z"/></clipPath>
+<clipPath id="c5"><path d="M461.3 521.7V344H880.9V521.7Z"/></clipPath>
+<clipPath id="c6"><path d="M175.7 521.7V404.5H453V521.7Z"/></clipPath>
+<clipPath id="c7"><path d="M180.1 430.4V315.9H870.2V430.4Z"/></clipPath>
+
+<style>
+text { white-space: pre; }
+path, image { pointer-events: none; }
+
+.s0{font-size:16.50px;font-family:CIDFont-F1_8;fill:#141414;}
+.s1{font-size:37.22px;font-family:CIDFont-F2_h;fill:#141414;}
+.s2{font-size:13.93px;font-family:CIDFont-F3_p;fill:#141414;}
+.s3{font-size:21.63px;font-family:CIDFont-F1_8;fill:#9B443F;}
+.s4{font-size:18.70px;font-family:CIDFont-F1_8;fill:#141414;}
+.s5{font-size:13.93px;font-family:CIDFont-F3_p;fill:#FFF;}
+.s6{font-size:13.93px;font-family:CIDFont-F3_p;fill:#000;}
+.s7{font-size:13.93px;font-family:CIDFont-F3_p;fill:#F00;}
+.s8{font-size:13.93px;font-family:CIDFont-F2_h;fill:#000;}
+.s9{font-size:12.47px;font-family:CIDFont-F4_z;fill:#000;}
+.sa{font-size:12.47px;font-family:CIDFont-F3_p;fill:#000;}
+.sb{font-size:21.63px;font-family:CIDFont-F3_p;fill:#000;}
+
+.g0{fill:#FFF;}
+.g1{fill:none;stroke:#A8A8A8;stroke-width:2.383;stroke-linejoin:round;}
+.g2{fill:none;stroke:#A8A8A8;stroke-width:1.099;stroke-linejoin:round;}
+.g3{fill:#004831;}
+.g4{fill:none;stroke:#FFF;stroke-width:1.099;stroke-linejoin:round;}
+.g5{fill:#C4D700;}
+.g6{fill:#A0C81E;}
+.g7{fill:#4B4B4B;}
+.g8{fill:#939393;}
+.g9{fill:none;stroke:#D9D9D9;stroke-width:1.099;stroke-linejoin:round;}
+.ga{fill:#DDD;}
+.gb{fill:none;stroke:#A6A6A6;stroke-width:1.466;stroke-linejoin:round;}
+
+</style>
+
+</defs>
+<path d="M0 0V935H1210V0Z" fill="#FFFFFF" stroke="none"/>
+<g clip-path="url(#c_1)">
+<path d="M0 48.8H1210V886.4H0Z" class="g0"/>
+<text x="1079.5" y="68.9" dx="0 .1 -.2 .1 0 -.1 .1 0 -.1 0 .1 0" class="s0">Confidential </text>
+<image clip-path="url(#c0)" preserveAspectRatio="none" x="1080" y="100" width="84" height="49" href="1/img/1.jpg"/>
+<path d="M46.6 159.7H1163.4" class="g1"/>
+<path d="M46.6 846.4H1163.4" class="g2"/>
+<text x="51" y="146.8" dx="0 0 .1 0 -.2 .4 -.2 .1 -.2 .1 .1 -.2 .1 0 -.1 0 0 0 .1 0 -.2" class="s1">Financial Performance </text>
+<text x="1151.3" y="867.3" class="s2">0 </text>
+<text x="67.6" y="194.3" class="s3">• </text>
+<text x="106.9" y="194.3" dx="0 .1 .1 0 .1 .1 -.1 -.1 -.3 -.1 0 .1 .1 .1 .1 -.5 0 0 -.1 -.1 -.1 0 0 -.1 .1 .1 0 .1 -.3 0 0 0 .1 -.1 .1 -.1 -.3 0 0 -.1 -.1 .1 -.1 0 .1 .1 -.1 0 -.1 .1 0 .1 .1 -.1 -.3 -.1 0 .1 .1 -.1 -.1 .1 0 .1 -.3 0 -.1 0 0 -.1 -.2 0 0 .1 .1 .1 -.3 .1 .1 -.3 0 .1 -.1 0 -.2 0 0 -.1 .1 -.1 -.1 0 .1 -.2 .1 .1 -.3 .1 .1 -.1 -.1 .1 .1 0 -.1 -.1 0 0 0 0 -.1 .1 -.5 0 0 .1 0 -.1 .1 .1 0 -.1 -.1 -.1 .1 0 -.1" class="s4">Revenue topped ¥2 trn in FY 2023/3. EBIT is projected to plunge from ¥92 bn in FY 2024/3 to ¥17 bn in FY 2025/3 as a result of </text>
+<text x="106.9" y="216.7" dx="0 .1 0 .1 0 -.1 .1 0 .1 -.1 -.2 .1 0 -.1 0 -.1 0 .1 -.2 -.1 .1 .1 -.7 .1 .1 .1 -.3 0 0 -.1 .1 .3 -.2 0 0 .1 0 .1 .1 -.1 -.1 0 -.5 .1 -.1 0 -.1 .1 .1 0 0" class="s4">impairment charges in the Core Components business. </text>
+<text x="67.6" y="239.1" class="s3">• </text>
+<text x="106.9" y="239.1" dx="0 0 .1 -.3 0 0 0 0 -.1 .1 -.1 -.1 0 -.1 0 .1 .1 0 0 -.3 -.2 0 .1 0 -.1 .1 -.1 0 0 -.1 .1 -.1 .1 .1 0 .1 .1 -.3 .1 -.3 0 .1 .1 -.3 0 0 .1 -.1 -.3 0 .1 -.2 .1 0 0 -.3 -.1 .1 .1 -.5 .1 -.1 .1 0 .1 .1 -.3 .1 0 -.1 0 -.2 0 -.1 -.1 .1 0 .1 0 -.3 .1 .1 .1 0 .1 0 .1 -.2 .1 -.5 0 .1 .1 -.5 0 .1 -.1 .1 0 0 0 -.1 .1 .1 -.1 0 -.5 0 0 .1 .1 0 .1 .1 0 0 -.1 .1 -.7 0 .2 0 .1 -.1 0 -.3 -.1 0" class="s4">FY 2026/3 targets: ¥2.5 trn in revenue and EBIT &gt; ¥360 bn, driven by Solutions expansion and streamlining of non-core assets to </text>
+<text x="106.9" y="261.6" dx="0 -.1 .1 0 .1 0 -.1 .1 -.3 .1 .1 -.2 0 -.1 .1 0 .1 -.1 0 -.1 .1 0" class="s4">restore profitability. </text>
+<image clip-path="url(#c1)" preserveAspectRatio="none" x="479" y="612" width="423" height="209" href="1/img/2.jpg"/>
+<image clip-path="url(#c2)" preserveAspectRatio="none" x="191" y="747" width="279" height="74" href="1/img/3.jpg"/>
+<path d="M482.7 793.6h48V814h-48V793.6Zm72.1-17h48V814h-48V776.6Zm72 14.5h48V814h-48V791.1Zm72.1-16h48V814h-48V775.1Zm72-.2h48V814h-48V774.9ZM843 746.2h48V814H843V746.2Z" class="g3"/>
+<path d="M482.7 793.6h48V814h-48V793.6Zm72.1-17h48V814h-48V776.6Zm72 14.5h48V814h-48V791.1Zm72.1-16h48V814h-48V775.1Zm72-.2h48V814h-48V774.9ZM843 746.2h48V814H843V746.2Z" class="g4"/>
+<path d="M482.7 781.2h48v12.5h-48V781.2Zm72.1-30.4h48v25.8h-48V750.8Zm72 16.3h48v24h-48v-24Zm72.1 4.6h48v3.4h-48v-3.4Zm72 43h48V814h-48v.7ZM843 691.9h48v54.3H843V691.9Z" class="g5"/>
+<path d="M482.7 781.2h48v12.5h-48V781.2Zm72.1-30.4h48v25.8h-48V750.8Zm72 16.3h48v24h-48v-24Zm72.1 4.6h48v3.4h-48v-3.4Zm72 43h48V814h-48v.7ZM843 691.9h48v54.3H843V691.9Z" class="g4"/>
+<path d="M482.7 764.5h48v16.7h-48V764.5Zm72.1-47.3h48v33.6h-48V717.2Zm72 1.5h48v48.4h-48V718.7Zm72.1 21.8h48v31.2h-48V740.5Zm72 76.6h48v-2.4h-48v2.4ZM843 615.8h48v76.1H843V615.8Z" class="g6"/>
+<path d="M482.7 764.5h48v16.7h-48V764.5Zm72.1-47.3h48v33.6h-48V717.2Zm72 1.5h48v48.4h-48V718.7Zm72.1 21.8h48v31.2h-48V740.5Zm72 76.6h48v-2.4h-48v2.4ZM843 615.8h48v76.1H843V615.8Z" class="g4"/>
+<path d="M194.7 767.4h48V814h-48V767.4Zm72.1-12.6h48V814h-48V754.8Zm71.8-3.9h48.1V814H338.6V750.9Zm72.1 20.8h48V814h-48V771.7Z" class="g7"/>
+<path d="M194.7 767.4h48V814h-48V767.4Zm72.1-12.6h48V814h-48V754.8Zm71.8-3.9h48.1V814H338.6V750.9Zm72.1 20.8h48V814h-48V771.7Z" class="g4"/>
+<path clip-path="url(#c3)" d="M194.7 751.5h48v15.9h-48V751.5Zm72.1 68h48V814h-48v5.5Zm71.8 1.5h48.1v-7H338.6v7Zm72.1-68.2h48v18.9h-48V752.8Z" class="g8"/>
+<path clip-path="url(#c4)" d="M194.7 751.5h48v15.9h-48V751.5Zm72.1 68h48V814h-48v5.5Zm71.8 1.5h48.1v-7H338.6v7Zm72.1-68.2h48v18.9h-48V752.8Z" class="g4"/>
+<path d="M182.6 813.8H902.9" class="g9"/>
+<text x="495.2" y="808.7" dx="0 -.1 -.1 .1" class="s5">375 </text>
+<text x="567.2" y="800.1" dx="0 -.1 .1 -.1" class="s5">687 </text>
+<text x="639.3" y="807.4" dx="0 -.1 .1 -.1" class="s5">422 </text>
+<text x="711.3" y="799.3" dx="0 -.1 -.1 .1" class="s5">716 </text>
+<text x="783.4" y="799.3" dx="0 -.1 .1 -.1" class="s5">720 </text>
+<text x="849.6" y="784.8" dx="0 -.1 0 -.1 -.1 .1" class="s5">1,250 </text>
+<text x="495.2" y="792.2" dx="0 -.1 -.1 .1" class="s6">230 </text>
+<text x="567.2" y="768.5" dx="0 -.1 .1 -.1" class="s6">479 </text>
+<text x="639.3" y="783.9" dx="0 -.1 .1 -.1" class="s6">441 </text>
+<text x="715.2" y="778.2" dx="0 -.1 -.1" class="s6">65 </text>
+<text x="770.4" y="819.1" dx="0 0 -.1 -.1" class="s7">(15) </text>
+<text x="849.6" y="723.8" dx="0 -.1 0 -.1 -.1 .1" class="s6">1,000 </text>
+<text x="495.2" y="777.7" dx="0 -.1 -.1 .1" class="s6">305 </text>
+<text x="567.2" y="738.8" dx="0 -.1 .1 -.1" class="s6">616 </text>
+<text x="639.3" y="747.6" dx="0 -.1 .1 -.1" class="s6">895 </text>
+<text x="711.3" y="760.8" dx="0 -.1 -.1 .1" class="s6">572 </text>
+<text x="800.4" y="814" dx="0 0 -.1 -.1" class="s7">(45) </text>
+<text x="849.6" y="658.7" dx="0 -.1 0 -.1 -.1 .1" class="s6">1,404 </text>
+<text x="207" y="795.5" dx="0 -.1 -.1 .1" class="s5">859 </text>
+<text x="273.2" y="789.2" dx="0 -.1 0 -.1 -.1 .1" class="s5">1,091 </text>
+<text x="345.2" y="787.2" dx="0 -.1 0 -.1 -.1 .1" class="s5">1,163 </text>
+<text x="423.1" y="797.7" dx="0 -.1 -.1 .1" class="s5">781 </text>
+<text x="207" y="764.3" dx="0 -.1 -.1 .1" class="s6">292 </text>
+<text x="274.4" y="821.5" dx="0 0 -.1 -.1 .1" class="s7">(102) </text>
+<text x="346.5" y="822.2" dx="0 0 -.1 -.1 .1" class="s7">(131) </text>
+<text x="423.1" y="767.1" dx="0 -.1 -.1 .1" class="s6">348 </text>
+<text x="201.1" y="741.4" dx="0 -.1 0 -.1 -.1 .1" class="s8">1,145 </text>
+<text x="273.2" y="744.7" dx="0 -.1 0 -.1 -.1 .1" class="s8">1,003 </text>
+<text x="345.2" y="740.7" dx="0 -.1 0 -.1 -.1 .1" class="s8">1,039 </text>
+<text x="417.3" y="742.5" dx="0 -.1 0 -.1 -.1 .1" class="s8">1,084 </text>
+<text x="495.2" y="754.4" dx="0 -.1 -.1 .1" class="s8">880 </text>
+<text x="561.4" y="707.1" dx="0 -.1 0 -.1 -.1 .1" class="s8">1,636 </text>
+<text x="633.4" y="708.4" dx="0 -.1 0 -.1 -.1 .1" class="s8">1,470 </text>
+<text x="711.3" y="730.4" dx="0 -.1 -.1 .1" class="s8">920 </text>
+<text x="783.4" y="764.7" dx="0 -.1 .1 -.1" class="s8">170 </text>
+<text x="849.6" y="605.7" dx="0 -.1 0 -.1 -.1 .1" class="s8">3,654 </text>
+<text x="197.3" y="834.9" dx="0 -.1 .2 -.1 -.1 .2" class="s6">2017/3 </text>
+<text x="269.3" y="834.9" dx="0 -.1 .2 -.1 .1 0" class="s6">2018/3 </text>
+<text x="341.3" y="834.9" dx="0 .1 .1 -.1 .1 .2" class="s6">2019/3 </text>
+<text x="413.4" y="834.9" dx="0 .1 .1 -.1 .1 .2" class="s6">2020/3 </text>
+<text x="485.4" y="834.9" dx="0 .1 .1 .1 -.1 .2" class="s6">2021/3 </text>
+<text x="557.6" y="834.9" dx="0 -.1 .1 .1 -.1 .2" class="s6">2022/3 </text>
+<text x="629.6" y="834.9" dx="0 -.1 .2 -.1 -.1 .2" class="s6">2023/3 </text>
+<text x="701.6" y="834.9" dx="0 -.1 .2 -.1 -.1 .2" class="s6">2024/3 </text>
+<text x="769.1" y="834.9" dx="0 -.1 .2 -.1 -.1 .2 .1" class="s6">2025/3E </text>
+<text x="841.1" y="834.9" dx="0 -.1 .2 -.1 -.1 .2 .1" class="s6">2026/3E </text>
+<path d="M224.8 856.2H231v6.2h-6.2Z" class="g3"/>
+<path d="M224.8 856.2H231v6.2h-6.2Z" class="g4"/>
+<text x="233.6" y="863.1" class="s9">ソリューション </text>
+<path d="M341.4 856.2h6.2v6.2h-6.2Z" class="g5"/>
+<path d="M341.4 856.2h6.2v6.2h-6.2Z" class="g4"/>
+<text x="350.3" y="863.1" class="s9">電子部品 </text>
+<path d="M420.9 856.2h6.3v6.2h-6.3Z" class="g6"/>
+<path d="M420.9 856.2h6.3v6.2h-6.3Z" class="g4"/>
+<text x="429.7" y="863.1" class="s9">コアコンポーネント </text>
+<path d="M562.3 856.2h6.2v6.2h-6.2Z" class="g7"/>
+<path d="M562.3 856.2h6.2v6.2h-6.2Z" class="g4"/>
+<text x="571.1" y="863.1" class="sa">(</text>
+<text x="575.3" y="863.1" class="s9">旧セグメント</text>
+<text x="650.1" y="863.1" class="sa">)</text>
+<text x="654.3" y="863.1" dx="0 0 -.1 0" class="s9">部品事業 </text>
+<path d="M724.5 856.2h6.3v6.2h-6.3Z" class="g8"/>
+<path d="M724.5 856.2h6.3v6.2h-6.3Z" class="g4"/>
+<text x="733.3" y="863.1" class="sa">(</text>
+<text x="737.5" y="863.1" class="s9">旧セグメント</text>
+<text x="812.3" y="863.1" class="sa">)</text>
+<text x="816.6" y="863.1" dx="0 0 -.1 0" class="s9">機器事業 </text>
+<image clip-path="url(#c5)" preserveAspectRatio="none" x="462" y="344" width="419" height="177" href="1/img/4.jpg"/>
+<image clip-path="url(#c6)" preserveAspectRatio="none" x="176" y="405" width="277" height="116" href="1/img/5.jpg"/>
+<path d="M465.7 463.3h47.4v56.6H465.7V463.3ZM537 453.2h47.5v66.7H537V453.2Zm71.3-5.7h47.5v72.4H608.3V447.5Zm71.3-2.2h47.5v74.6H679.6V445.3Zm71.3-.5h47.5v75.1H750.9V444.8Zm71.4-9.6h47.4v84.7H822.3V435.2Z" class="g3"/>
+<path d="M465.7 463.3h47.4v56.6H465.7V463.3ZM537 453.2h47.5v66.7H537V453.2Zm71.3-5.7h47.5v72.4H608.3V447.5Zm71.3-2.2h47.5v74.6H679.6V445.3Zm71.3-.5h47.5v75.1H750.9V444.8Zm71.4-9.6h47.4v84.7H822.3V435.2Z" class="g4"/>
+<path d="M465.7 444.8h47.4v18.5H465.7V444.8ZM537 430.3h47.5v22.9H537V430.3Zm71.3-8.5h47.5v25.7H608.3V421.8Zm71.3-.5h47.5v24H679.6v-24Zm71.3-.4h47.5v23.9H750.9V420.9Zm71.4-19.6h47.4v33.9H822.3V401.3Z" class="g5"/>
+<path d="M465.7 444.8h47.4v18.5H465.7V444.8ZM537 430.3h47.5v22.9H537V430.3Zm71.3-8.5h47.5v25.7H608.3V421.8Zm71.3-.5h47.5v24H679.6v-24Zm71.3-.4h47.5v23.9H750.9V420.9Zm71.4-19.6h47.4v33.9H822.3V401.3Z" class="g4"/>
+<path d="M465.7 415.4h47.4v29.4H465.7V415.4ZM537 394.3h47.5v36H537v-36Zm71.3-12.8h47.5v40.3H608.3V381.5Zm71.3 1.3h47.5v38.5H679.6V382.8Zm71.3 .4h47.5v37.7H750.9V383.2Zm71.4-34.9h47.4v53H822.3v-53Z" class="g6"/>
+<path d="M465.7 415.4h47.4v29.4H465.7V415.4ZM537 394.3h47.5v36H537v-36Zm71.3-12.8h47.5v40.3H608.3V381.5Zm71.3 1.3h47.5v38.5H679.6V382.8Zm71.3 .4h47.5v37.7H750.9V383.2Zm71.4-34.9h47.4v53H822.3v-53Z" class="g4"/>
+<path d="M180.4 461.8h47.7v58.1H180.4V461.8Zm71.3 .6h47.5v57.5H251.7V462.4Zm71.3-5.3h47.5v62.8H323V457.1Zm71.3 1.1h47.5v61.7H394.3V458.2Z" class="g7"/>
+<path d="M180.4 461.8h47.7v58.1H180.4V461.8Zm71.3 .6h47.5v57.5H251.7V462.4Zm71.3-5.3h47.5v62.8H323V457.1Zm71.3 1.1h47.5v61.7H394.3V458.2Z" class="g4"/>
+<path d="M180.4 429.9h47.7v31.9H180.4V429.9Zm71.3-17.8h47.5v50.3H251.7V412.1ZM323 409h47.5v48.1H323V409Zm71.3 1.3h47.5v47.9H394.3V410.3Z" class="g8"/>
+<path d="M180.4 429.9h47.7v31.9H180.4V429.9Zm71.3-17.8h47.5v50.3H251.7V412.1ZM323 409h47.5v48.1H323V409Zm71.3 1.3h47.5v47.9H394.3V410.3Z" class="g4"/>
+<path clip-path="url(#c7)" d="M180.4 333.5h47.7v96.4H180.4V333.5Zm71.3-28.3h47.5V412.1H251.7V305.2Zm71.3-6.4h47.5V409H323V298.8Zm71.3 3h47.5V410.3H394.3V301.8Zm71.4 10h47.5V415.4H465.7V311.8ZM537 269.7h47.5V394.3H537V269.7Zm71.3-25.5h47.5V381.5H608.3V244.2Zm71.3 2.6h47.5v136H679.6v-136Zm71.3 .7h47.5V383.2H750.9V247.5Zm71.3-71h47.5V348.3H822.2V176.5Z" class="g0"/>
+<path d="M168.5 519.9h713" class="g9"/>
+<text x="472.1" y="496.5" dx="0 -.1 0 -.1 -.1 .1" class="s5">8,353 </text>
+<text x="543.2" y="491.5" dx="0 -.1 0 -.1 -.1 .1" class="s5">9,837 </text>
+<text x="610.7" y="488.6" dx="0 -.1 -.1 0 -.1 .1 -.1" class="s5">10,686 </text>
+<text x="682" y="487.5" dx="0 -.1 .1 -.1 -.1 .1 -.1" class="s5">11,011 </text>
+<text x="753.3" y="487.1" dx="0 -.1 -.1 0 -.1 .1 -.1" class="s5">11,100 </text>
+<text x="824.6" y="482.3" dx="0 -.1 .1 -.1 -.1 .1 -.1" class="s5">12,500 </text>
+<text x="472.1" y="458.9" dx="0 -.1 0 -.1 -.1 .1" class="s6">2,730 </text>
+<text x="543.2" y="446.6" dx="0 -.1 0 -.1 -.1 .1" class="s6">3,391 </text>
+<text x="614.5" y="439.4" dx="0 -.1 0 -.1 -.1 .1" class="s6">3,785 </text>
+<text x="685.8" y="438.2" dx="0 -.1 0 -.1 -.1 .1" class="s6">3,523 </text>
+<text x="757.2" y="437.6" dx="0 -.1 0 -.1 -.1 .1" class="s6">3,510 </text>
+<text x="828.5" y="423.1" dx="0 -.1 0 -.1 -.1 .1" class="s6">5,000 </text>
+<text x="472.1" y="435" dx="0 -.1 0 -.1 -.1 .1" class="s6">4,319 </text>
+<text x="543.2" y="417.1" dx="0 -.1 0 -.1 -.1 .1" class="s6">5,279 </text>
+<text x="614.5" y="406.4" dx="0 -.1 0 -.1 -.1 .1" class="s6">5,924 </text>
+<text x="685.8" y="406.8" dx="0 -.1 0 -.1 -.1 .1" class="s6">5,691 </text>
+<text x="757.2" y="406.8" dx="0 -.1 0 -.1 -.1 .1" class="s6">5,560 </text>
+<text x="828.5" y="379.7" dx="0 -.1 0 -.1 -.1 .1" class="s6">7,800 </text>
+<text x="186.8" y="495.7" dx="0 -.1 0 -.1 -.1 .1" class="s5">8,569 </text>
+<text x="258.1" y="496.1" dx="0 -.1 0 -.1 -.1 .1" class="s5">8,500 </text>
+<text x="329.4" y="493.3" dx="0 -.1 0 -.1 -.1 .1" class="s5">9,284 </text>
+<text x="400.8" y="493.9" dx="0 -.1 0 -.1 -.1 .1" class="s5">9,124 </text>
+<text x="186.8" y="450.8" dx="0 -.1 0 -.1 -.1 .1" class="s6">4,697 </text>
+<text x="258.1" y="442" dx="0 -.1 0 -.1 -.1 .1" class="s6">7,388 </text>
+<text x="329.4" y="437.8" dx="0 -.1 0 -.1 -.1 .1" class="s6">7,073 </text>
+<text x="400.8" y="439.1" dx="0 -.1 0 -.1 -.1 .1" class="s6">7,045 </text>
+<text x="183" y="419.8" dx="0 -.1 .1 -.1 -.1 .1 -.1" class="s8">14,228 </text>
+<text x="254.3" y="402" dx="0 -.1 .1 -.1 -.1 .1 -.1" class="s8">15,770 </text>
+<text x="325.6" y="398.7" dx="0 -.1 -.1 0 -.1 .1 -.1" class="s8">16,237 </text>
+<text x="396.9" y="400" dx="0 -.1 .1 -.1 -.1 .1 -.1" class="s8">15,991 </text>
+<text x="468.2" y="405.3" dx="0 -.1 -.1 0 -.1 .1 -.1" class="s8">15,269 </text>
+<text x="539.4" y="384.3" dx="0 -.1 .1 -.1 -.1 .1 -.1" class="s8">18,389 </text>
+<text x="610.7" y="371.4" dx="0 -.1 -.1 0 -.1 .1 -.1" class="s8">20,253 </text>
+<text x="682" y="372.5" dx="0 -.1 .1 -.1 -.1 .1 -.1" class="s8">20,042 </text>
+<text x="753.3" y="372.9" dx="0 -.1 -.1 0 -.1 .1 -.1" class="s8">20,000 </text>
+<text x="824.6" y="338.1" dx="0 -.1 .1 -.1 -.1 .1 -.1" class="s8">25,300 </text>
+<text x="182.8" y="541" dx="0 -.1 .2 -.1 -.1 .2" class="s6">2017/3 </text>
+<text x="254.1" y="541" dx="0 -.1 .2 -.1 -.1 .2" class="s6">2018/3 </text>
+<text x="325.5" y="541" dx="0 -.1 .1 .1 -.1 .2" class="s6">2019/3 </text>
+<text x="396.7" y="541" dx="0 .1 .1 .1 -.1 .2" class="s6">2020/3 </text>
+<text x="468" y="541" dx="0 .1 .1 -.1 .1 .2" class="s6">2021/3 </text>
+<text x="539.3" y="541" dx="0 -.1 .2 -.1 .1 0" class="s6">2022/3 </text>
+<text x="610.7" y="541" dx="0 -.1 .2 -.1 -.1 .2" class="s6">2023/3 </text>
+<text x="682" y="541" dx="0 -.1 .2 -.1 -.1 .2" class="s6">2024/3 </text>
+<text x="748.8" y="541" dx="0 -.1 .2 -.1 -.1 .2 -.1" class="s6">2025/3E </text>
+<text x="820.1" y="541" dx="0 -.1 .1 .1 -.1 .2 -.1" class="s6">2026/3E </text>
+<path d="M209.2 562.5h6.2v6.2h-6.2Z" class="g3"/>
+<path d="M209.2 562.5h6.2v6.2h-6.2Z" class="g4"/>
+<text x="218.2" y="569.4" class="s9">ソリューション </text>
+<path d="M324.9 562.5h6.2v6.2h-6.2Z" class="g5"/>
+<path d="M324.9 562.5h6.2v6.2h-6.2Z" class="g4"/>
+<text x="333.7" y="569.4" class="s9">電子部品 </text>
+<path d="M403.2 562.5h6.2v6.2h-6.2Z" class="g6"/>
+<path d="M403.2 562.5h6.2v6.2h-6.2Z" class="g4"/>
+<text x="411.9" y="569.4" class="s9">コアコンポーネント </text>
+<path d="M543.4 562.5h6.2v6.2h-6.2Z" class="g7"/>
+<path d="M543.4 562.5h6.2v6.2h-6.2Z" class="g4"/>
+<text x="552.4" y="569.4" class="sa">(</text>
+<text x="556.6" y="569.4" class="s9">旧セグメント</text>
+<text x="631.4" y="569.4" class="sa">)</text>
+<text x="635.6" y="569.4" dx="0 0 -.1 0" class="s9">部品事業 </text>
+<path d="M704.6 562.5h6.2v6.2h-6.2Z" class="g8"/>
+<path d="M704.6 562.5h6.2v6.2h-6.2Z" class="g4"/>
+<text x="713.3" y="569.4" class="sa">(</text>
+<text x="717.6" y="569.4" class="s9">旧セグメント</text>
+<text x="792.4" y="569.4" class="sa">)</text>
+<text x="796.6" y="569.4" dx="0 0 -.1 0" class="s9">機器事業 </text>
+<path d="M87.8 287.7H1100.2v26H87.8Z" class="ga"/>
+<path d="M87.8 287.7H1100.2v26H87.8Z" class="gb"/>
+<text x="550.4" y="308.7" dx="0 0 .1 0 .1 .1 .1" class="sb">Revenue </text>
+<path d="M87.8 579.9H1100.2v26H87.8Z" class="ga"/>
+<path d="M87.8 579.9H1100.2v26H87.8Z" class="gb"/>
+<text x="569.6" y="601" dx="0 .1 .1 .1" class="sb">EBIT </text>
+
+</g>
+
+<style>
+
+@font-face {
+	font-family: CIDFont-F1_8;
+	src: url("fonts/CIDFont-F1_8.woff") format("woff");
+}
+
+@font-face {
+	font-family: CIDFont-F2_h;
+	src: url("fonts/CIDFont-F2_h.woff") format("woff");
+}
+
+@font-face {
+	font-family: CIDFont-F3_p;
+	src: url("fonts/CIDFont-F3_p.woff") format("woff");
+}
+
+@font-face {
+	font-family: CIDFont-F4_z;
+	src: url("fonts/CIDFont-F4_z.woff") format("woff");
+}
+
+</style>
+
+</svg>

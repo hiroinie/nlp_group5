@@ -1,6 +1,10 @@
 # AI Junior Banker
 
-This repository contains a minimal Streamlit proof of concept that generates a Porter 5 Forces slide for a given company using GPT-4o.
+This repository contains a Streamlit proof of concept that can generate multiple types of business slides using GPT-4o.
+Currently two slide types are available:
+
+- **4P Analysis** – marketing mix analysis with strategic summary
+- **Company Financial** – simple financial highlights overview
 
 ## Setup
 
@@ -24,4 +28,4 @@ Start the app with Streamlit:
 streamlit run app.py
 ```
 
-Enter a company name, click **Generate Slide**, then download the resulting PDF.
+Choose a slide type in the sidebar, enter a company name and generate the slide. A PDF download will also be available.
