@@ -112,11 +112,11 @@ Example format (aim for 100-125 characters per point):
 
 def generate_4p_slide_html(company: str, analysis_data: dict, strategic_summary: str):
     """
-    Generate 4P analysis slide using template.html with strategic summary
+    Generate 4P analysis slide using 4p_template.html with strategic summary
     """
     try:
         # Load template file
-        with open("template.html", "r", encoding="utf-8") as f:
+        with open("4p_template.html", "r", encoding="utf-8") as f:
             template_content = f.read()
         
         # Create Jinja2 template object
@@ -274,18 +274,6 @@ def run() -> None:
             - **💰 Price**: Pricing strategy & competitiveness
             - **🌍 Place**: Distribution, channels & placement
             - **📢 Promotion**: Promotion & marketing activities
-            """
-        )
-
-        st.markdown("## ✨ Improvement Points")
-        st.markdown(
-            """
-            - 🎨 Faithful to original model design
-            - 📐 Presentation-oriented layout
-            - 📝 Detailed analysis content (within 125 characters)
-            - 🖨️ PDF output optimization
-            - 📊 Professional quality
-            - 🧠 AI-generated strategic summary
             """
         )
 

@@ -1,8 +1,9 @@
 import json
+import re
 import openai
 import streamlit as st
-from jinja2 import Template
 from weasyprint import HTML
+from base64 import b64encode
 
 # Configure OpenAI API key
 try:
@@ -13,18 +14,14 @@ except KeyError:
 
 def generate_financial_summary(company: str, analysis_data: dict) -> str:
     """Generate a short financial summary sentence."""
-    revenue_text = " / ".join(analysis_data.get("revenue", []))
-    profit_text = " / ".join(analysis_data.get("profit", []))
-    expenses_text = " / ".join(analysis_data.get("expenses", []))
-    outlook_text = " / ".join(analysis_data.get("outlook", []))
+    revenue_text = " / ".join(_stringify(i) for i in analysis_data.get("revenue", []))
+    profit_text = " / ".join(_stringify(i) for i in analysis_data.get("profit", []))
 
     prompt = f"""
 Based on the following financial overview for {company}, provide a concise summary within 150 characters highlighting the key trend.
 
 Revenue: {revenue_text}
 Profit: {profit_text}
-Expenses: {expenses_text}
-Outlook: {outlook_text}
 """
     try:
         response = openai.chat.completions.create(
@@ -43,8 +40,9 @@ Outlook: {outlook_text}
 def generate_financial_analysis(company: str):
     """Ask OpenAI for key financial metrics."""
     prompt = f"""
-You are a financial analyst. Provide recent financial highlights for {company}.
-Return 3 short bullet points (within 125 characters) each for Revenue, Profit, Expenses and Outlook in JSON format like:
+You are a financial analyst.
+Please provide the revenue and profit trends for {company} over the past few years. We will use these figures to create a bar chart of the company's performance trends.
+Return the information in JSON format like:
 {{
   "revenue": ["..."],
   "profit": ["..."],
@@ -60,54 +58,92 @@ Return 3 short bullet points (within 125 characters) each for Revenue, Profit, E
                 {"role": "user", "content": prompt},
             ],
         )
-        content = response.choices[0].message.content.strip()
-        if content.startswith("```json"):
-            content = content.replace("```json", "").replace("```", "").strip()
-        elif content.startswith("```"):
-            content = content.replace("```", "").strip()
-        return json.loads(content)
+        content = _strip_code_fences(response.choices[0].message.content)
+        try:
+            return json.loads(content)
+        except json.JSONDecodeError as je:
+            st.error(f"JSON parsing error: {je}\nRaw response:\n{content[:500]}")
+            return None
     except Exception as e:
         st.error(f"Financial analysis API error: {e}")
         return None
 
 
 def generate_financial_slide_html(company: str, analysis_data: dict, summary: str) -> str:
-    """Generate financial slide HTML using financial_template.html."""
+    """Use ChatGPT (gpt-4o) to generate the final HTML slide by providing the original template and the data to fill in."""
     try:
-        with open("financial_template.html", "r", encoding="utf-8") as f:
-            template_content = f.read()
+        # Read the SVG template. If it lacks an HTML wrapper, add a minimal one so the model clearly receives a valid HTML document.
+        with open("financial_template.svg", "r", encoding="utf-8") as f:
+            svg_content = f.read()
 
-        html_content = template_content
-        html_content = html_content.replace("Company Financial", "Company Financial")
-        html_content = html_content.replace(
-            "        • Financial highlights overview<br>\n        • Key figures in recent years",
-            f"        • {summary}<br>        • Key financial indicators"
-        )
-        revenue_html = "\n".join([f'            <li>{item}</li>' for item in analysis_data.get("revenue", [])])
-        profit_html = "\n".join([f'            <li>{item}</li>' for item in analysis_data.get("profit", [])])
-        expenses_html = "\n".join([f'            <li>{item}</li>' for item in analysis_data.get("expenses", [])])
-        outlook_html = "\n".join([f'            <li>{item}</li>' for item in analysis_data.get("outlook", [])])
+        if "<html" not in svg_content.lower():
+            template_content = f"<html><body>{svg_content}</body></html>"
+        else:
+            template_content = svg_content
 
-        html_content = html_content.replace(
-            "            <li>Revenue item 1</li>\n            <li>Revenue item 2</li>\n            <li>Revenue item 3</li>",
-            revenue_html
+        # Construct the prompt for ChatGPT.
+        prompt = (
+            "You are a professional presentation designer. "
+            "I will give you an HTML template for a financial overview slide together with specific data. "
+            "Please output a *single* completed HTML document (including <html> and <body> tags) that looks the same as the template but with the data filled in. "
+            "Return only HTML – no Markdown code fences or additional commentary. Ensure the slide keeps 16:9 horizontal orientation. For the bar charts, adjust bar heights proportionally to the numeric values provided.\n\n"
+            "----- TEMPLATE START -----\n"
+            f"{template_content}\n"
+            "----- TEMPLATE END -----\n\n"
+            f"Company name: {company}\n"
+            f"Introductory bullets (replace the existing intro bullets): • {summary} <br> • Key financial indicators\n\n"
+            "Replace each section's list items using the following JSON. Each list must contain exactly the items given, one <li> element per item.\n"
+            f"{json.dumps(analysis_data, ensure_ascii=False)}"
         )
-        html_content = html_content.replace(
-            "            <li>Profit item 1</li>\n            <li>Profit item 2</li>\n            <li>Profit item 3</li>",
-            profit_html
+
+        response = openai.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": "You output only valid, minified HTML with no explanations."},
+                {"role": "user", "content": prompt},
+            ],
+            # Let the model decide length; template is large so we omit max_tokens here.
         )
-        html_content = html_content.replace(
-            "            <li>Expenses item 1</li>\n            <li>Expenses item 2</li>\n            <li>Expenses item 3</li>",
-            expenses_html
-        )
-        html_content = html_content.replace(
-            "            <li>Outlook item 1</li>\n            <li>Outlook item 2</li>\n            <li>Outlook item 3</li>",
-            outlook_html
-        )
-        return html_content
+
+        html_output = _strip_code_fences(response.choices[0].message.content)
+
+        # Ensure landscape orientation CSS is present.
+        html_output = _ensure_landscape_css(html_output)
+
+        return html_output
     except Exception as e:
-        st.error(f"Template processing error occurred: {e}")
+        st.error(f"Financial slide generation error: {e}")
         return None
+
+
+def _strip_code_fences(text: str) -> str:
+    """Remove triple-backtick Markdown fences (with or without language tags) from given text."""
+    # Remove starting and ending fences, and any inner fenced blocks.
+    # Pattern: optional ```lang\n at beginning, optional ``` at end, global.
+    # Use non-greedy match for content between fences.
+    return re.sub(r"```[a-zA-Z]*\s*|```", "", text).strip()
+
+
+def _stringify(item) -> str:
+    """Convert list element (str, dict, etc.) to a readable string."""
+    if isinstance(item, dict):
+        # Concatenate key-value pairs like "year: 2023, value: $10B"
+        return ", ".join(f"{k}: {v}" for k, v in item.items())
+    return str(item)
+
+
+def _ensure_landscape_css(html: str) -> str:
+    """Inject @page landscape CSS into <head> if not already present."""
+    if "@page" in html and "landscape" in html:
+        return html  # Already has orientation info
+    css_block = (
+        "<style>@page { size: 1280px 720px landscape; margin: 0;} "
+        "body {width: 1280px; height: 720px; margin:0 auto;} </style>"
+    )
+    if "<head>" in html:
+        return html.replace("<head>", f"<head>{css_block}")
+    # Fallback: prepend
+    return css_block + html
 
 
 def run() -> None:
