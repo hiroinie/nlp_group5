@@ -1,8 +1,6 @@
-import os
 import json
 import openai
 import streamlit as st
-from jinja2 import Template
 from weasyprint import HTML
 
 # OpenAI API key configuration (using Streamlit secrets)
@@ -119,15 +117,10 @@ def generate_4p_slide_html(company: str, analysis_data: dict, strategic_summary:
         with open("4p_template.html", "r", encoding="utf-8") as f:
             template_content = f.read()
         
-        # Create Jinja2 template object
-        template = Template(template_content)
-        
-        # Generate HTML by replacing placeholders
-        html_content = template_content
+        # (Template rendering not required; placeholder replacement handled below)
         
         # Replace title and subtitle
-        html_content = html_content.replace("4P Analysis", f"4P Analysis")
-        html_content = html_content.replace(
+        html_content = template_content.replace(
             '''        • Toyota's 4P Analysis (Product, Price, Place, Promotion) to organize business strategy<br>
         • Focus on differentiation in specialized applications and global market recognition improvement''',
             f"        • {strategic_summary}<br>\n        • Strategic business framework for market positioning and competitive advantage"

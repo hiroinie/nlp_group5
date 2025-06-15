@@ -72,38 +72,6 @@ Requirements:
         return None
 
 
-def _prepare_chart_data_for_llm(data_items: list) -> list:
-    """Parses data strings and calculates relative bar heights for the LLM."""
-    structured_data = []
-    numeric_values = []
-
-    # First pass: extract labels and numeric values.
-    for item in data_items:
-        label, value_text, numeric_val = "N/A", "0", 0.0
-        if isinstance(item, str) and ":" in item:
-            parts = item.split(":", 1)
-            label = parts[0].strip()
-            value_text = parts[1].strip()
-            numeric_match = re.search(r"[-+]?(\d*\.?\d+)", value_text)
-            if numeric_match:
-                numeric_val = float(numeric_match.group(1))
-        
-        structured_data.append({"label": label, "value_text": value_text})
-        numeric_values.append(numeric_val)
-
-    if not numeric_values:
-        return []
-
-    # Second pass: calculate percentage height.
-    max_val = max(numeric_values) if numeric_values else 1
-    if max_val == 0: max_val = 1
-
-    for i, item in enumerate(structured_data):
-        item["height_pct"] = round((numeric_values[i] / max_val) * 100)
-
-    return structured_data
-
-
 def _build_bars_html(items: list, color: str) -> str:
     """Return SVG-based bar chart so WeasyPrint renders it in PDF."""
     labels, values, texts = [], [], []
