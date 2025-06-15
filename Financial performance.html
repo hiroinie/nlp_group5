@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial Performance – 16 : 9 Slide (offline charts)</title>
+  <style>
+    /* === Page & slide centering ======================================== */
+    html,body{height:100%;margin:0}
+    body{display:flex;justify-content:center;align-items:center;background:#fff;font-family:"Segoe UI",Arial,sans-serif;color:#333}
+
+    /* === Slide container (PowerPoint widescreen 1280×720 @96 dpi) ===== */
+    .slide{width:1280px;height:720px;box-sizing:border-box;padding:24px 48px 20px;overflow:hidden}
+
+    /* === Typography & layout ========================================== */
+    h1{font-size:2.6rem;margin:0 0 6px;font-weight:700}
+    hr{border:none;border-top:1px solid #aaa;margin:10px 0 18px}
+    ul.key-messages{margin:0 0 16px;padding-left:18px;list-style:square;font-size:1.05rem}
+    ul.key-messages li{margin:3px 0;line-height:1.4}
+    .section-title{background:#ddd;text-align:center;font-weight:600;padding:4px 0;margin:18px 0 6px}
+
+    /* === Chart canvases =============================================== */
+    canvas{width:68%!important;height:160px!important;display:block;margin:0 auto;border:1px solid transparent}
+
+    footer{font-size:.75rem;color:#666;margin-top:14px}
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <h1>Financial Performance</h1>
+    <hr>
+
+    <ul class="key-messages">
+      <li>Revenue topped <strong>¥2&nbsp;trn</strong> in FY&nbsp;2023/3. EBIT is projected to plunge from <strong>¥92&nbsp;bn</strong> in FY&nbsp;2024/3 to <strong>¥17&nbsp;bn</strong> in FY&nbsp;2025/3 as a result of impairment charges in the Core Components business.</li>
+      <li>FY&nbsp;2026/3 targets: <strong>¥2.5&nbsp;trn</strong> in revenue and <strong>EBIT &gt; ¥360&nbsp;bn</strong>, driven by Solutions expansion and streamlining of non‑core assets to restore profitability.</li>
+    </ul>
+
+    <div class="section-title">Revenue</div>
+    <canvas id="revenueChart"></canvas>
+
+    <div class="section-title">EBIT</div>
+    <canvas id="ebitChart"></canvas>
+
+    <footer>*Charts render client‑side with a lightweight offline script (no external CDN). Update <code>revenueData</code> and <code>ebitData</code> arrays in the script for real figures—values are ¥ 100 million units.*</footer>
+  </div>
+
+  <script>
+  // ========= Data (EDIT HERE) ============================================= //
+  const labels = ['2017/3','2018/3','2019/3','2020/3','2021/3','2022/3','2023/3','2024/3','2025/3E','2026/3E'];
+  const revenueData = [14228,15770,16237,15991,15269,18389,20253,20042,20000,25300];
+  const ebitData    = [ 1145, 1003, 1039, 1084,  880, 1636, 1470,  920,  170, 3654];
+
+  // ========= Simple Bar‑Chart Drawer (Canvas 2D) ========================= //
+  function drawBarChart(canvasId, data, opts={}){
+      const canvas=document.getElementById(canvasId);
+      const ctx=canvas.getContext('2d');
+      // accommodate device pixel ratio for crisp lines
+      const dpr=window.devicePixelRatio||1;
+      const cssRect=canvas.getBoundingClientRect();
+      canvas.width = cssRect.width * dpr;
+      canvas.height = cssRect.height * dpr;
+      ctx.scale(dpr,dpr);
+
+      // --- chart geometry ------------------------------------------------- //
+      const margin={top:16,right:16,bottom:34,left:56};
+      const w=cssRect.width - margin.left - margin.right;
+      const h=cssRect.height - margin.top - margin.bottom;
+      const barGap=0.25; // proportion of slot left empty
+      const slot=w/labels.length;
+      const barW=slot*(1-barGap);
+
+      // --- scales --------------------------------------------------------- //
+      const step=opts.step||1000;
+      const maxRaw=Math.max(...data);
+      const max=Math.ceil(maxRaw/step)*step;
+
+      // --- grid lines & Y‑axis ------------------------------------------- //
+      ctx.strokeStyle='#e4e4e4';
+      ctx.lineWidth=1;
+      ctx.beginPath();
+      for(let y=0;y<=max;y+=step){
+          const yPx=margin.top + h - (y/max)*h;
+          ctx.moveTo(margin.left,yPx);
+          ctx.lineTo(margin.left+w,yPx);
+      }
+      ctx.stroke();
+      // Y axis
+      ctx.strokeStyle='#999';
+      ctx.beginPath();
+      ctx.moveTo(margin.left,margin.top);
+      ctx.lineTo(margin.left,margin.top+h);
+      ctx.stroke();
+      // X axis
+      ctx.beginPath();
+      ctx.moveTo(margin.left,margin.top+h);
+      ctx.lineTo(margin.left+w,margin.top+h);
+      ctx.stroke();
+
+      // --- Y‑axis labels -------------------------------------------------- //
+      ctx.fillStyle='#222';
+      ctx.font='13px "Segoe UI", Arial';
+      ctx.textAlign='right';
+      ctx.textBaseline='middle';
+      for(let y=0;y<=max;y+=step){
+          const yPx=margin.top + h - (y/max)*h;
+          ctx.fillText(y.toLocaleString(),margin.left-8,yPx);
+      }
+
+      // --- Bars ----------------------------------------------------------- //
+      ctx.fillStyle=opts.color||'#0b4d4e';
+      data.forEach((v,i)=>{
+          const barHeight=(v/max)*h;
+          const x=margin.left + i*slot + (slot-barW)/2;
+          const y=margin.top + h - barHeight;
+          ctx.fillRect(x,y,barW,barHeight);
+      });
+
+      // --- X‑axis labels -------------------------------------------------- //
+      ctx.fillStyle='#222';
+      ctx.font='11px "Segoe UI", Arial';
+      ctx.textAlign='center';
+      ctx.textBaseline='top';
+      labels.forEach((lbl,i)=>{
+          const x=margin.left + i*slot + slot/2;
+          const y=margin.top + h + 6;
+          ctx.fillText(lbl,x,y);
+      });
+  }
+
+  window.addEventListener('load',()=>{
+     drawBarChart('revenueChart',revenueData,{step:5000,color:'#014d4e'});
+     drawBarChart('ebitChart',ebitData,{step:500,color:'#859900'});
+  });
+  </script>
+</body>
+</html>
