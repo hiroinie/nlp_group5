@@ -3,7 +3,6 @@ import re
 import openai
 import streamlit as st
 from weasyprint import HTML
-from base64 import b64encode
 
 # Configure OpenAI API key
 try:
@@ -18,7 +17,7 @@ def generate_financial_summary(company: str, analysis_data: dict) -> str:
     profit_text = " / ".join(_stringify(i) for i in analysis_data.get("profit", []))
 
     prompt = f"""
-Based on the following financial overview for {company}, provide a concise summary within 150 characters highlighting the key trend.
+Based on the following financial overview for {company}, provide a concise summary within 100 characters highlighting the key trend.
 
 Revenue: {revenue_text}
 Profit: {profit_text}
@@ -41,14 +40,18 @@ def generate_financial_analysis(company: str):
     """Ask OpenAI for key financial metrics."""
     prompt = f"""
 You are a financial analyst.
-Please provide the revenue and profit trends for {company} over the past few years. We will use these figures to create a bar chart of the company's performance trends.
-Return the information in JSON format like:
+Please provide the company's revenue and EBIT for the past eight fiscal years and, if available, the current and next fiscal year forecasts. We will use these figures to create bar charts of performance trends.
+
+Return ONLY JSON in the following exact structure (do not include any commentary):
 {{
-  "revenue": ["..."],
-  "profit": ["..."],
-  "expenses": ["..."],
-  "outlook": ["..."]
+  "revenue": ["YYYY: value", ...],
+  "ebit": ["YYYY: value", ...]
 }}
+
+Requirements:
+• List each fiscal year separately (e.g., 2018/3, 2019/3 ...). If a value is a forecast, add suffix "E" (e.g., 2025E).
+• Use the same currency unit throughout (indicate unit inside the value, e.g., "$79 billion" or "¥2.3 trillion").
+• Provide up to 10 entries (max). If forecast data is unavailable, omit.
 """
     try:
         response = openai.chat.completions.create(
@@ -69,50 +72,99 @@ Return the information in JSON format like:
         return None
 
 
+def _prepare_chart_data_for_llm(data_items: list) -> list:
+    """Parses data strings and calculates relative bar heights for the LLM."""
+    structured_data = []
+    numeric_values = []
+
+    # First pass: extract labels and numeric values.
+    for item in data_items:
+        label, value_text, numeric_val = "N/A", "0", 0.0
+        if isinstance(item, str) and ":" in item:
+            parts = item.split(":", 1)
+            label = parts[0].strip()
+            value_text = parts[1].strip()
+            numeric_match = re.search(r"[-+]?(\d*\.?\d+)", value_text)
+            if numeric_match:
+                numeric_val = float(numeric_match.group(1))
+        
+        structured_data.append({"label": label, "value_text": value_text})
+        numeric_values.append(numeric_val)
+
+    if not numeric_values:
+        return []
+
+    # Second pass: calculate percentage height.
+    max_val = max(numeric_values) if numeric_values else 1
+    if max_val == 0: max_val = 1
+
+    for i, item in enumerate(structured_data):
+        item["height_pct"] = round((numeric_values[i] / max_val) * 100)
+
+    return structured_data
+
+
+def _build_bars_html(items: list, color: str) -> str:
+    """Return SVG-based bar chart so WeasyPrint renders it in PDF."""
+    labels, values, texts = [], [], []
+    for itm in items:
+        if isinstance(itm, str) and ":" in itm:
+            label, txt = itm.split(":", 1)
+            labels.append(label.strip())
+            texts.append(txt.strip())
+            m = re.search(r"[-+]?[0-9]*\.?[0-9]+", txt)
+            values.append(float(m.group()) if m else 0)
+    if not values:
+        return ""
+    # chart geometry
+    w, h = 600, 150
+    slot = w / len(values)
+    bar_w = slot * 0.6
+    mx = max(values) or 1
+    svg_parts = [f'<svg width="{w}" height="{h}" style="display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">']
+    for i, (lbl, val, txt) in enumerate(zip(labels, values, texts)):
+        bh = round((val / mx) * (h - 20))  # leave space for value text
+        x = i * slot + (slot - bar_w) / 2
+        y = h - bh
+        svg_parts.append(f'<rect x="{x}" y="{y}" width="{bar_w}" height="{bh}" fill="{color}"/>')
+        svg_parts.append(f'<text x="{x + bar_w/2}" y="{y - 2}" font-size="10" text-anchor="middle">{txt}</text>')
+        svg_parts.append(f'<text x="{x + bar_w/2}" y="{h}" font-size="10" text-anchor="middle">{lbl}</text>')
+    svg_parts.append('</svg>')
+    return "<div style='width:100%;text-align:center'>" + "".join(svg_parts) + "</div>"
+
+
 def generate_financial_slide_html(company: str, analysis_data: dict, summary: str) -> str:
-    """Use ChatGPT (gpt-4o) to generate the final HTML slide by providing the original template and the data to fill in."""
+    """Generates final HTML by inserting data into the predefined template with markers."""
     try:
-        # Read the SVG template. If it lacks an HTML wrapper, add a minimal one so the model clearly receives a valid HTML document.
-        with open("financial_template.svg", "r", encoding="utf-8") as f:
-            svg_content = f.read()
+        with open("Financial performance.html", "r", encoding="utf-8") as f:
+            tpl = f.read()
 
-        if "<html" not in svg_content.lower():
-            template_content = f"<html><body>{svg_content}</body></html>"
-        else:
-            template_content = svg_content
+        revenue_html = _build_bars_html(analysis_data.get("revenue", []), "#4A90E2")
+        ebit_html = _build_bars_html(analysis_data.get("ebit", []), "#F5A623")
 
-        # Construct the prompt for ChatGPT.
-        prompt = (
-            "You are a professional presentation designer. "
-            "I will give you an HTML template for a financial overview slide together with specific data. "
-            "Please output a *single* completed HTML document (including <html> and <body> tags) that looks the same as the template but with the data filled in. "
-            "Return only HTML – no Markdown code fences or additional commentary. Ensure the slide keeps 16:9 horizontal orientation. For the bar charts, adjust bar heights proportionally to the numeric values provided.\n\n"
-            "----- TEMPLATE START -----\n"
-            f"{template_content}\n"
-            "----- TEMPLATE END -----\n\n"
-            f"Company name: {company}\n"
-            f"Introductory bullets (replace the existing intro bullets): • {summary} <br> • Key financial indicators\n\n"
-            "Replace each section's list items using the following JSON. Each list must contain exactly the items given, one <li> element per item.\n"
-            f"{json.dumps(analysis_data, ensure_ascii=False)}"
+        # Replace placeholders (allow for either single or START/END markers)
+        out = tpl.replace("<!--COMPANY_NAME-->", company)
+        out = out.replace("<!--SUMMARY_LIST-->", f"<li>{summary}</li><li>Key financial indicators</li>")
+        # comment markers replacement
+        out = re.sub(r"<!--REVENUE_CHART.*?-->([\s\S]*?)<!--REVENUE_CHART.*?-->", revenue_html, out, flags=re.IGNORECASE)
+        out = re.sub(r"<!--EBIT_CHART.*?-->([\s\S]*?)<!--EBIT_CHART.*?-->", ebit_html, out, flags=re.IGNORECASE)
+        # canvas replacement fallback
+        out = re.sub(r"<canvas[^>]*id=\"revenueChart\"[^>]*>[\s\S]*?</canvas>", revenue_html, out, flags=re.IGNORECASE)
+        out = re.sub(r"<canvas[^>]*id=\"ebitChart\"[^>]*>[\s\S]*?</canvas>", ebit_html, out, flags=re.IGNORECASE)
+
+        # Inject mandatory CSS (size, margin-0, chart styles) ifまだ無い
+        css_block = (
+            "<style>@page { size:1280px 720px; margin:0 } "
+            "html,body{width:1280px;height:720px;margin:0;padding:0;} "
+            ".chart-container{position:relative;height:150px;text-align:center;white-space:nowrap;} "
+            "" 
         )
+        if "@page" not in out:
+            out = out.replace("<head>", "<head>"+css_block, 1)
 
-        response = openai.chat.completions.create(
-            model="gpt-4o",
-            messages=[
-                {"role": "system", "content": "You output only valid, minified HTML with no explanations."},
-                {"role": "user", "content": prompt},
-            ],
-            # Let the model decide length; template is large so we omit max_tokens here.
-        )
-
-        html_output = _strip_code_fences(response.choices[0].message.content)
-
-        # Ensure landscape orientation CSS is present.
-        html_output = _ensure_landscape_css(html_output)
-
-        return html_output
+        return out
     except Exception as e:
-        st.error(f"Financial slide generation error: {e}")
+        st.error(f"Slide template processing error: {e}")
         return None
 
 
@@ -130,20 +182,6 @@ def _stringify(item) -> str:
         # Concatenate key-value pairs like "year: 2023, value: $10B"
         return ", ".join(f"{k}: {v}" for k, v in item.items())
     return str(item)
-
-
-def _ensure_landscape_css(html: str) -> str:
-    """Inject @page landscape CSS into <head> if not already present."""
-    if "@page" in html and "landscape" in html:
-        return html  # Already has orientation info
-    css_block = (
-        "<style>@page { size: 1280px 720px landscape; margin: 0;} "
-        "body {width: 1280px; height: 720px; margin:0 auto;} </style>"
-    )
-    if "<head>" in html:
-        return html.replace("<head>", f"<head>{css_block}")
-    # Fallback: prepend
-    return css_block + html
 
 
 def run() -> None:
