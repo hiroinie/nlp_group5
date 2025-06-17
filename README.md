@@ -40,12 +40,28 @@ $ mkdir -p .streamlit
 $ printf "OPENAI_API_KEY=sk-..." > .streamlit/secrets.toml
 
 # 3.  Launch the app
-$ streamlit run app.py
+$ streamlit run app.py  
+# or
+# $ py -m streamlit run app.py
 ```
 
 Open the local URL shown in the terminal, choose a slide type from the sidebar,
 enter a company name, and click **Generate**. The slide will appear within
 ~15 seconds (depending on model latency).
+
+## 🖱️ User Manual
+
+1. Launch the app following the **Quick Start** instructions above.
+2. In the left-hand sidebar, select either **4P Analysis** or **Company Financial**.
+3. Enter the target company's name (English or Japanese) into the text field.
+4. Click **Generate**. Within 10–20 seconds the slide preview appears beneath the sidebar.
+5. (Optional) Click **Download PDF** to save a high-resolution, printer-friendly copy.
+6. Troubleshooting:
+   • Verify that your `OPENAI_API_KEY` is correct and has sufficient quota.
+   • Ensure you have an active internet connection and retry.
+   • Check the terminal for detailed error logs.
+
+> Note: The application runs locally; no public hosting link is provided.
 
 ## 🔒 Security Notes
 
