@@ -4,7 +4,7 @@ import openai
 
 @st.cache_data
 def load_confidential_data():
-    return pd.read_csv("Investment_Banking_Confidential_Data__sample_.csv")
+    return pd.read_csv("Investment_Banking_Confidential_Data__sample_.csv", sep=';')
 
 def get_sector_options(df):
     return sorted(df['Sector'].unique())
