@@ -1,4 +1,4 @@
-# AI Presentation Generator + +  Info Assistant for Client Meetings
+# AI Presentation Generator + Info Assistant for Client Meetings
 
 Generate professional, single-slide decks for business analysis with one click.
 Also includes features to assist with client meeting preparation by retrieving and organizing relevant textual information.
