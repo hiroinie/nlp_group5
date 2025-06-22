@@ -12,6 +12,7 @@ PowerPoint licence is required.
 2. **Company Financial Slide** – Multi-year revenue & EBIT bar charts plus a
    concise performance summary.
 3. **Company News Sentiment Info** – Headlines sentiment analysis (POSITIVE / NEGATIVE / NEUTRAL) powered by DistilBERT, with an optional GPT-4o two-sentence business insight.
+4. **Confidential Information Decision** - Answers key M&A questions using confidential deal data and AI expertise.
 
 Both slide types are delivered as:
 • An on-screen HTML preview inside Streamlit
@@ -21,11 +22,13 @@ Both slide types are delivered as:
 
 ```
 .
-├── app.py                 Entry point – Streamlit sidebar + page routing
-├── slide_4p.py            4P Analysis logic & template injection
-├── slide_financial.py     Financial slide logic & template injection
-├── sentiment_analysis.py  Company news sentiment analysis logic & UI
-├── News_Category_Dataset_v3.json  Sample news dataset (≈200 k headlines)
+├── app.py                          Entry point – Streamlit sidebar + page routing
+├── slide_4p.py                     4P Analysis logic & template injection
+├── slide_financial.py              Financial slide logic & template injection
+├── sentiment_analysis.py           Company news sentiment analysis logic & UI
+├── confidential_information_qa.py  Answers key M&A questions using confidential deal data and AI expertise.
+├── News_Category_Dataset_v3.json   Sample news dataset (≈200 k headlines)
+├── Investment_Banking_Confidential_Data__sample_.csv Confiential information dataset
 ├── 4p_template.html       Static HTML/CSS template for 4P slide
 ├── Financial performance.html  Static HTML/CSS/JS template for financial slide
 ├── requirements.txt       Runtime dependencies
