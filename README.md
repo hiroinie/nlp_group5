@@ -11,7 +11,7 @@ The Streamlit application leverages OpenAI's GPT-4o and o3 model to draft conten
 1-2. **Company Financial Slide** – Multi-year revenue & EBIT bar charts plus a
    concise performance summary.
 
-2 Info Assistant
+2. Info Assistant
 2-1. **Company News Sentiment Info** – Headlines sentiment analysis (POSITIVE / NEGATIVE / NEUTRAL) powered by DistilBERT, with an optional GPT-4o two-sentence business insight.
 2-2. **Confidential Information Decision** - Answers key M&A questions using confidential deal data and AI expertise.
 
